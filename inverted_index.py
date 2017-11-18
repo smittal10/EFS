@@ -3,7 +3,7 @@ import operator
 import json
 import re
 inverted_index={}
-with open('/home/saloni/Downloads/DBLP-SIGWEB/concepts.csv','rt') as obj:
+with open('DBLP-SIGWEB/concepts.csv','rt') as obj:
 	table = csv.reader(obj,delimiter=',')
 	for row in table:
 		key=row[1].lower()
@@ -13,7 +13,7 @@ with open('/home/saloni/Downloads/DBLP-SIGWEB/concepts.csv','rt') as obj:
 			my_list=[]
 			my_list.append(int(row[0]))
 			inverted_index[key]=my_list
-with open('/home/saloni/Downloads/DBLP-SIGWEB/author_tags.csv','rt') as obj:
+with open('DBLP-SIGWEB/author_tags.csv','rt') as obj:
 	table = csv.reader(obj,delimiter=',')
 	for row in table:
 		key=row[1].lower()
@@ -37,7 +37,7 @@ def search_query(input_query,inverted_index):
 	paper_id=list(paper_id)
 	return paper_id
 paper_authors={}
-with open('/home/saloni/Downloads/DBLP-SIGWEB/paper_authors.csv','rt') as obj:
+with open('DBLP-SIGWEB/paper_authors.csv','rt') as obj:
 	table = csv.reader(obj,delimiter=',')
 	for row in table:
 		key=int(row[0])
@@ -48,7 +48,7 @@ with open('/home/saloni/Downloads/DBLP-SIGWEB/paper_authors.csv','rt') as obj:
 			my_list.append(int(row[1]))
 			paper_authors[key]=my_list
 display_info={}
-with open('/home/saloni/Downloads/DBLP-SIGWEB/display_info.csv','rt') as obj:
+with open('DBLP-SIGWEB/display_info.csv','rt') as obj:
 	table = csv.reader(obj,delimiter=',')
 	for row in table:
 		key=int(row[0])
@@ -61,10 +61,10 @@ with open('/home/saloni/Downloads/DBLP-SIGWEB/display_info.csv','rt') as obj:
 		my_list.append(row[6])
 		display_info[key]=my_list
 		
-# with open('/home/saloni/Downloads/DBLP-SIGWEB/my_dict.json', 'r') as fp:
+# with open('DBLP-SIGWEB/my_dict.json', 'r') as fp:
 #     paper_authors = json.load(fp)
 pr={}
-with open('/home/saloni/Downloads/DBLP-SIGWEB/pagerank.json', 'r') as fp:
+with open('DBLP-SIGWEB/pagerank.json', 'r') as fp:
     pr = json.load(fp)
 ppr={}
 for key,value in pr.items():
@@ -83,24 +83,26 @@ pr=ppr
 # print(pr)
 query = input("Search here: ")
 paper_list=search_query(query,inverted_index)
+if paper_list==[]:
+	print("No Results found")
+	exit(0)
 # print(paper_list)
-if 1458194 in paper_list:
-	print('hi')
+
+
 author_ids=[]
 for paper_id in paper_list:
 	for author_id in paper_authors[paper_id]:
 		author_ids.append(author_id)
 author_ids=list(set(author_ids))
 # print(author_ids)
-if 81100097085 in author_ids:
-	print("yo")
-
 result=[]
 for author_id in author_ids:
 	if author_id in pr.keys():
 		result.append((author_id,pr[author_id]))
 # print(result)
-
+if result==[]:
+	print("No Results found")
+	exit(0)
 final_res=sorted(result,key=lambda x:x[1],reverse=True)
 i=0
 for item in final_res:
