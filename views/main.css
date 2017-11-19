@@ -1,0 +1,82 @@
+header{
+	height: 50px;
+	border-bottom: 1px solid #d2d2d2;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	color: #ff5722;
+	font-size: 18px;
+}
+#search{
+	min-height:400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 50px;
+}
+@font-face {
+    font-family: logo;
+    src: url(./fonts/AlexBrush-Regular.ttf);
+}
+#logoText{
+	font-family: logo;
+	font-size: 70px;
+	color: #ff5722;
+}
+input[type="text"]{
+	height:30px;
+	width: 350px;
+	padding: 5px;
+	font-size: 16px;
+	font-weight: 600;
+	color: gray;
+}
+button{
+	height:44px;
+	width: 120px;
+	background-color: #ff5722;
+    border: 0px;
+    color: white;
+    font-size: 19px;
+}
+footer{
+	border-top: 1px solid #d2d2d2;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	color:gray;
+	position: fixed;
+	width:99%;
+	bottom: 0px;
+	background-color: white;
+	z-index: 2;
+}
+
+#results{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 80%;
+}
+.eachResult{
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+.authorInfo{
+	font-size: 20px;
+	color: #ff5722;
+}
+.authorPubInfo{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	color: #5f5e5e;
+	font-size: 17px;
+}
