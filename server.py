@@ -61,11 +61,13 @@ class GetHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type',mimetype)
                 self.end_headers()
                 print "hello world"
-                result = display_results(self.path.split('=')[1])
+                q = self.path.split('=')[1]
+                q = q.replace("%20"," ")
+                result = display_results(q)
                 c = "";
                 for a in result:
                     for b in a:
-                        c = c +","+b
+                        c = c +"," +b
                 self.wfile.write(c)
                 print(curdir + sep + self.path)
             return
