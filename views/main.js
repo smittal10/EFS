@@ -16,8 +16,8 @@ function search()
 	       var results = xhttp.responseText;
 	       results = results.substr(1);
 	       results = results.split(',');
-	       var data = ''
-	       let count = (results.length)/6;
+	       var data = '';
+	       let count = Math.floor((results.length)/6);
 	       for(let i =0; i<count; i++)
 	       {
 	       		data = data + '<div class="eachResult">'+
@@ -29,6 +29,8 @@ function search()
 									'</div>'+
 								'</div>';
 	       }
+	       if(data == '')
+	       		data = "No Results Found";
 	       res.innerHTML = data;
 	    }
 	};

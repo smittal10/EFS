@@ -57,11 +57,14 @@ footer{
 }
 
 #results{
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	width: 80%;
+	color: #ff5722;
+	font-size: 19px;
 }
 .eachResult{
 	display: flex;
