@@ -74,8 +74,7 @@ def display_results(query):
 	paper_list=search_query(query,inverted_index)
 	if paper_list==[]:
 		print("No Results found")
-		return []
-		
+		exit(0)
 	author_ids=[]
 	for paper_id in paper_list:
 		for author_id in paper_authors[paper_id]:
@@ -86,7 +85,8 @@ def display_results(query):
 		if author_id in pr.keys():
 			result.append((author_id,pr[author_id]))
 	if result==[]:
-		return []
+		print("No Results found")
+		exit(0)
 	final_res=sorted(result,key=lambda x:x[1],reverse=True)
 	i=0
 	final_display_list=[]
