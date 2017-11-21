@@ -23,9 +23,9 @@ function search()
 	       		data = data + '<div class="eachResult">'+
 									'<div class="authorInfo">'+ results[i*6]+'[ '+results[i*6+1]+' - '+results[i*6+2]+' ]</div>'+
 									'<div class="authorPubInfo">'+
-										'<div>Total Piblication: '+results[i*6+3]+'</div>'+
-										'<div>Citation count: '+results[i*6+4]+'</div>'+
-										'<div>Average Citation: '+results[i*6+5]+'</div>'+
+										'<div>Total Publication: '+results[i*6+3]+'</div>'+
+										'<div> Citation count: '+results[i*6+4]+'</div>'+
+										'<div> Average Citation: '+results[i*6+5]+'</div>'+
 									'</div>'+
 								'</div>';
 	       }

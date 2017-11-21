@@ -1,4 +1,4 @@
-def pagerank(G, alpha=0.85, personalization=None,
+def pagerank(G, alpha=0.5, personalization=None,
              max_iter=100, tol=1.0e-6, nstart=None, weight='weight',
              dangling=None):
     """Return the PageRank of the nodes in the graph.

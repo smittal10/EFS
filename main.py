@@ -1,7 +1,7 @@
 import csv
 import networkx as nx
 import json
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 my_dict={}
 with open('DBLP-SIGWEB/paper_authors.csv','rt') as obj:
   table = csv.reader(obj,delimiter=',')
@@ -80,11 +80,9 @@ for author in isolated_authors:
 # nx.draw(G,pos)
 # labels = nx.get_edge_attributes(G,'weight')
 # nx.draw_networkx_edge_labels(G,pos,edge_labels=labels)
-# plt.savefig('DBLP-SIGWEB/graph2.png')
+# plt.savefig('DBLP-SIGWEB/my_graph.png')
 
 pr = nx.pagerank(G,personalization=author_scores,max_iter=100)
-# for author in isolated_authors:
-#   pr[author]=author_scores[author]
 print(len(pr))
 with open('DBLP-SIGWEB/pagerank_100.json', 'w') as fp:
     json.dump(pr, fp)

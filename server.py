@@ -1,5 +1,7 @@
-from BaseHTTPServer import BaseHTTPRequestHandler
-import json, urlparse
+# from BaseHTTPServer import BaseHTTPRequestHandler
+from http.server import BaseHTTPRequestHandler
+import json
+import urllib.parse as urlparse
 import string,cgi,time
 from os import curdir, sep
 from my_inverted_index import display_results
@@ -47,11 +49,11 @@ class GetHandler(BaseHTTPRequestHandler):
 
             if sendReply == True:
                 #Open the static file requested and send it
-                f = open(curdir + sep + self.path, 'rb')
+                f = open(curdir + sep + self.path, 'rt')
                 self.send_response(200)
                 self.send_header('Content-type',mimetype)
                 self.end_headers()
-                self.wfile.write(f.read())
+                self.wfile.write(f.read().encode('utf-8'))
                 f.close()
                 print(curdir + sep + self.path)
 
@@ -60,7 +62,7 @@ class GetHandler(BaseHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header('Content-type',mimetype)
                 self.end_headers()
-                print "hello world"
+                print("hello world")
                 q = self.path.split('=')[1]
                 q = q.replace("%20"," ")
                 result = display_results(q)
@@ -68,7 +70,7 @@ class GetHandler(BaseHTTPRequestHandler):
                 for a in result:
                     for b in a:
                         c = c +"," +b
-                self.wfile.write(c)
+                self.wfile.write(c.encode('utf-8'))
                 print(curdir + sep + self.path)
             return
 
@@ -90,7 +92,7 @@ class GetHandler(BaseHTTPRequestHandler):
                         #self.end_headers()
             return
 if __name__ == '__main__':
-    from BaseHTTPServer import HTTPServer
+    from http.server import HTTPServer
     server = HTTPServer(('localhost', 8080), GetHandler)
-    print 'Starting server at http://localhost:8080'
+    print('Starting server at http://localhost:8080')
     server.serve_forever()

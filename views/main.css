@@ -83,3 +83,6 @@ footer{
 	color: #5f5e5e;
 	font-size: 17px;
 }
+.authorPubInfo > div {
+	margin-left: 10px;
+}

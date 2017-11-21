@@ -49,6 +49,14 @@ def display_results(query):
 				my_list.append(int(row[1]))
 				paper_authors[key]=my_list
 	display_info={}
+	paper_scores={}
+	with open('DBLP-SIGWEB/papers.csv','rt') as obj:
+		table = csv.reader(objj,delimiter=',')
+		for row in table:
+			key = int(row[0])
+			paper_scores[key]=int(row[1])  
+
+		
 	with open('DBLP-SIGWEB/display_info.csv','rt') as obj:
 		table = csv.reader(obj,delimiter=',')
 		for row in table:
