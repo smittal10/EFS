@@ -21,7 +21,7 @@ function search()
 	       for(let i =0; i<count; i++)
 	       {
 	       		data = data + '<div class="eachResult">'+
-									'<div class="authorInfo">'+ results[i*6]+'[ '+results[i*6+1]+' - '+results[i*6+2]+' ]</div>'+
+									'<a href="https://google.com/search?q='+results[i*6]+'" target="_blank"><div class="authorInfo">'+ results[i*6]+'[ '+results[i*6+1]+' - '+results[i*6+2]+' ]</div></a>'+
 									'<div class="authorPubInfo">'+
 										'<div>Total Publication: '+results[i*6+3]+'</div>'+
 										'<div> Citation count: '+results[i*6+4]+'</div>'+

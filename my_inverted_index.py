@@ -7,6 +7,7 @@ def search_query(input_query,inverted_index):
 	author_id=[]
 	# pattern = re.compile('[\W_]+')
 	# word = pattern.sub(' ',input_query)
+	input_query=input_query.lower()
 	pattern = re.compile(input_query)
 	for key in inverted_index.keys():
 		if (pattern.search(key)):
